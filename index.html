@@ -3,23 +3,41 @@
   <head>
     <meta charset="utf-8">
     <title>Cards</title>
-    <script src="js/cards.js" charset="utf-8"></script>
     <script src="js/jquery-1.11.3.min.js" charset="utf-8"></script>
+    <script src="js/games.js" charset="utf-8"></script>
+    <script src="js/cardsPackage.js" charset="utf-8"></script>
+    <script src="js/cards.js" charset="utf-8"></script>
   </head>
   <body>
     <h1>Testing lab for cards library</h1>
-    <input type="button" name="name" value="Cantidad" id="id_CountCards">
+    <input type="button" name="name" value="Total Cards" id="id_CountCards">
 
-    <input type="button" name="name" value="Repartir" id="id_ServeCards">
+    <input type="button" name="name" value="Remaining Cards" id="id_CountRemainingCards">
+
+    <input type="button" name="name" value="Serve to all" id="id_ServeCards">
 
     <input type="button" name="name" value="Restart" id="id_Restart">
-        <div id="id_output">
-
-        </div>
+        <br>
+        <h2>Stats</h2>
+        <label for="id_output">Count Cards:</label>
+        <input type="text" name="name" readonly id="id_output">
+        <br>
+        <label for="id_output_Remaining">Count Remaining Cards:</label>
+        <input type="text" name="name" readonly id="id_output_Remaining">
+        <br>
+        <h2>Players</h2>
+        <label for="id_domCarlos">Carlos:</label>
         <div id="id_domCarlos">
 
         </div>
+        <br>
+        <label for="id_domGabriela">Gabriela:</label>
         <div id="id_domGabriela">
+
+        </div>
+        <br>
+        <label for="id_domClaudia">Claudia:</label>
+        <div id="id_domClaudia">
 
         </div>
 
@@ -33,13 +51,26 @@ var myDeck = new deckOfCards;
 myDeck.game = new gameType(3,21);//3cards per player, 21points to win
 myDeck.fn_addPlayer("Carlos","id_domCarlos");
 myDeck.fn_addPlayer("Gabriela","id_domGabriela");
+myDeck.fn_addPlayer("Claudia","id_domClaudia");
 
 //output DOM element
 var salida = $("#id_output");
+salida.prop('readonly', true);
+salida.prop('size', 3);
+var salidaRemaining = $("#id_output_Remaining");
+salidaRemaining.prop('readonly', true);
+salidaRemaining.prop('size', 3);
 
 $("#id_CountCards").click(function(){
-      var output = "<p>CountCards="+ myDeck.fn_countCards() +"</p>";
-      salida.html(output);
+      var output = myDeck.fn_countCards();
+      salida.val(output);
+      return true;
+    }
+    );
+
+$("#id_CountRemainingCards").click(function(){
+      var output = myDeck.fn_countRemainingCards();
+      salidaRemaining.val(output);
       return true;
     }
     );
@@ -51,25 +82,8 @@ $("#id_Restart").click(function(){
     );
 
 $("#id_ServeCards").click(function(){
-      var nPlayers = myDeck.fn_countPlayers();
-      var elemento = "";
-      var html = "";
-      var cardServed = "";
-      for(i=0;i<myDeck.game.cardsPerPlayer;i++){
-        for(y=0;y<nPlayers;y++){
-            elemento = "#"+myDeck.players[y].idDom;
-            cardServed = myDeck.fn_serveCard(myDeck.players[y].name);
-            if (cardServed!=="emptyDeck"){
-              html = $(elemento).html();
-              $(elemento).html(html + " |" + cardServed + "| ");
-            }else{
-              alert("no more cards");
-              y=nPlayers;//exit the loop
-            }
-        };
-      };
-      return true;
-    }
-    );
+    myDeck.fn_serveFullHand();
+    return true;
+});
 -->
 </script>
