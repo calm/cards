@@ -1,27 +1,28 @@
 # cards
 ReadMe
 
-Instructions (demo):
+**Instructions (demo):**
+
 
 1)  download the main folder and double click on the index.html file.
 
 2)  each button leads to an implemented method.
 
 
-Instructions (library):
+**Instructions (library):**
 
-1)  create an object deckOfCards (line 50 in index.html demo file)
+1)  create an object deckOfCards (line 50 in index.html demo file).
 
 2)  define game rules creating a gameType,
-    default values are 3 cards until 21 points (line 51 in index.html demo file)
+    default values are 3 cards until 21 points (line 51 in index.html demo file).
 
 3)  add players calling fn_addPlayer method, two parameters:
         P1) name of the player, string.
         P2) id of the DOM element to print the cards, string.  
-    (line 52 in index.html demo file)
+    (line 52 in index.html demo file).
 
 4)  the method fn_countCards takes no parameters and returns an integer
-    with the number of cards in the deck
+    with the number of cards in the deck.
 
 5)  the method fn_countRemainingCards takes no parameters and returns an integer
     with the number of cards remaining in the deck not being served yet.
@@ -38,7 +39,7 @@ Instructions (library):
     value: the value of the card, retrieved by the json object.
     id: unique identification number for each card, retrieved by the json object.
 
-Implemented methods in demo buttons:
+**Implemented methods in demo buttons:**
 
 1)  Total Cards: it displays inside a text box the number of cards in the deck.
 
@@ -49,7 +50,7 @@ Implemented methods in demo buttons:
 3)  Reset: reloads the page.
 
 
-Dependencies:
+**Dependencies:**
 
 1)  jquery-1.11.3, included in the js/ folder,
     used in order to deal with browser compatibility.
@@ -57,7 +58,7 @@ Dependencies:
 2)  after jquery this scripts: games.js, cardsPackage.js, and cards.js
 
 
-Whys:
+**Whys:**
 
 1)  Why Javascript?
 
