@@ -3,8 +3,73 @@
   <head>
     <meta charset="utf-8">
     <title>Cards</title>
+    <script src="js/cards.js" charset="utf-8"></script>
+    <script src="js/jquery-1.11.3.min.js" charset="utf-8"></script>
   </head>
   <body>
+    <h1>Testing lab for cards library</h1>
+    <input type="button" name="name" value="Cantidad" id="id_CountCards">
+
+    <input type="button" name="name" value="Repartir" id="id_ServeCards">
+
+    <input type="button" name="name" value="Restart" id="id_Restart">
+        <div id="id_output">
+
+        </div>
+        <div id="id_domCarlos">
+
+        </div>
+        <div id="id_domGabriela">
+
+        </div>
+
 
   </body>
 </html>
+<script type="text/javascript">
+<!--
+
+var myDeck = new deckOfCards;
+myDeck.game = new gameType(3,21);//3cards per player, 21points to win
+myDeck.fn_addPlayer("Carlos","id_domCarlos");
+myDeck.fn_addPlayer("Gabriela","id_domGabriela");
+
+//output DOM element
+var salida = $("#id_output");
+
+$("#id_CountCards").click(function(){
+      var output = "<p>CountCards="+ myDeck.fn_countCards() +"</p>";
+      salida.html(output);
+      return true;
+    }
+    );
+
+$("#id_Restart").click(function(){
+      document.location = document.location;
+      return true;
+    }
+    );
+
+$("#id_ServeCards").click(function(){
+      var nPlayers = myDeck.fn_countPlayers();
+      var elemento = "";
+      var html = "";
+      var cardServed = "";
+      for(i=0;i<myDeck.game.cardsPerPlayer;i++){
+        for(y=0;y<nPlayers;y++){
+            elemento = "#"+myDeck.players[y].idDom;
+            cardServed = myDeck.fn_serveCard(myDeck.players[y].name);
+            if (cardServed!=="emptyDeck"){
+              html = $(elemento).html();
+              $(elemento).html(html + " |" + cardServed + "| ");
+            }else{
+              alert("no more cards");
+              y=nPlayers;//exit the loop
+            }
+        };
+      };
+      return true;
+    }
+    );
+-->
+</script>
